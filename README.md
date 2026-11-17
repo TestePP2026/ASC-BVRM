@@ -17,3 +17,6 @@ Cada gravação cria um commit e o site atualiza em cerca de um minuto.
 
 ## Atualização automática
 `.github/workflows/update.yml` corre `scripts/scrape.py` 4 vezes por dia e grava `data/games.json`. Também se pode correr à mão em Actions > Atualizar jogos da FPB > Run workflow. Se a FPB mudar o formato das páginas, o passo falha e o GitHub avisa por email; o site continua com os últimos dados.
+
+## Plantéis
+`scripts/rosters.py` abre a página de cada equipa na FPB (campo "Número da equipa na FPB" no painel) com um navegador automático e grava `data/rosters.json`. No site, o plantel manual de uma equipa (se existir) substitui o da FPB. "Não mostrar o plantel no site" esconde-o por completo (útil para escalões de formação). As fotografias dos atletas não são copiadas.

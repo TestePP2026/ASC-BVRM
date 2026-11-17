@@ -1,0 +1,97 @@
+{
+ "updated": "2026-11-17T12:00+00:00",
+ "teams": {
+  "63236": [
+   {
+    "number": 30,
+    "name": "Afonso Fernandes",
+    "position": "",
+    "fpb_id": 219262
+   },
+   {
+    "number": 15,
+    "name": "Diogo Rosado",
+    "position": "Extremo / Poste",
+    "fpb_id": 223469
+   },
+   {
+    "number": 21,
+    "name": "Eduardo Pinheiro",
+    "position": "Extremo / Poste",
+    "fpb_id": 150039
+   },
+   {
+    "number": 84,
+    "name": "Gustavo Santos",
+    "position": "",
+    "fpb_id": 236404
+   },
+   {
+    "number": 19,
+    "name": "José Catrapolo",
+    "position": "Extremo / Poste",
+    "fpb_id": 150279
+   },
+   {
+    "number": 5,
+    "name": "José Fernandes",
+    "position": "Base",
+    "fpb_id": 204932
+   },
+   {
+    "number": 10,
+    "name": "Marcos Suzano",
+    "position": "Poste",
+    "fpb_id": 182307
+   },
+   {
+    "number": 16,
+    "name": "Mauro Alexandre",
+    "position": "Poste",
+    "fpb_id": 233325
+   },
+   {
+    "number": 80,
+    "name": "Miguel Singéis",
+    "position": "",
+    "fpb_id": 237293
+   },
+   {
+    "number": 41,
+    "name": "Pedro Leitão",
+    "position": "",
+    "fpb_id": 223063
+   },
+   {
+    "number": 9,
+    "name": "Pedro Lopes",
+    "position": "Extremo",
+    "fpb_id": 193278
+   },
+   {
+    "number": 98,
+    "name": "Robinson Jr",
+    "position": "Extremo",
+    "fpb_id": 323128
+   },
+   {
+    "number": 3,
+    "name": "Stefan Évora",
+    "position": "Extremo",
+    "fpb_id": 298933
+   },
+   {
+    "number": 33,
+    "name": "Tiago Marcão",
+    "position": "Base",
+    "fpb_id": 215907
+   },
+   {
+    "number": 2,
+    "name": "Tomás Marcão",
+    "position": "",
+    "fpb_id": 243877
+   }
+  ]
+ }
+}

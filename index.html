@@ -77,7 +77,7 @@ function merge(a=[],man=[]){const m=new Map(a.map(g=>[String(g.id),g])),extra=[]
   if(k&&m.has(k)){const o=m.get(k);for(const f in x)if(f!=="hidden"&&x[f]!==""&&x[f]!=null)o[f]=x[f]}else extra.push(x)}
  return[...m.values(),...extra]}
 (async()=>{
-const [club,auto,man,teams]=await Promise.all(["club","games","games-manual","teams"].map(n=>get(`data/${n}.json`)));
+const [club,auto,man,teams,ros]=await Promise.all(["club","games","games-manual","teams","rosters"].map(n=>get(`data/${n}.json`)));
 const re=new RegExp(club?.match||"ASC/BVRM","i"),us=n=>re.test(n||"");
 const all=merge(auto?.games,man?.games).map(g=>({...g,cat:label(g.comp)})).sort((a,b)=>(a.date+(a.time||"")).localeCompare(b.date+(b.time||"")));
 const played=g=>g.hs!=null&&g.hs!=="",today=new Date().toLocaleDateString("sv-SE");
@@ -109,9 +109,9 @@ const tl=q("#teams");
  s.append(el("b",0,t.name),el("small",0,t.competition||[t.category,t.gender].filter(Boolean).join(" ")));d.append(s);
  if(t.photo){const i=el("img");i.src=t.photo;i.alt="Equipa "+t.name;i.loading="lazy";d.append(i)}
  if(t.coach)d.append(el("p",0,"Treinador: "+t.coach));
- const p=t.players||[];
+ const p=[...(t.hide_players?[]:(t.players?.length?t.players:(ros?.teams?.[t.fpb_id]||[])))].sort((a,b)=>(a.number??999)-(b.number??999));
  if(p.length){const ul=el("ul");p.forEach(x=>{const li=el("li");li.append(el("span",0,x.number??""),el("div",0,x.name+(x.position?`, ${x.position}`:"")));ul.append(li)});d.append(ul)}
- else d.append(el("p","mut","Plantel por publicar."));
+ else d.append(el("p","mut",t.hide_players?"Plantel não publicado.":"Plantel por publicar."));
  if(t.fpb_url){const a=el("a",0,"Classificação na FPB");a.href=t.fpb_url;a.rel="noopener";d.append(a)}
  tl.append(d)});
 if(club){[["Pavilhão",club.venue],["Morada",club.address],["Email",club.email],["Telefone",club.phone],["Fundado em",club.founded]].filter(x=>x[1]).forEach(([k,v])=>q("#club").append(el("dt",0,k),el("dd",0,v)));

@@ -48,8 +48,10 @@ collections:
               - {name: coach, label: Treinador, widget: string, required: false}
               - {name: photo, label: Fotografia da equipa, widget: image, required: false}
               - {name: fpb_url, label: Ligação da classificação na FPB, widget: string, required: false}
+              - {name: fpb_id, label: "Número da equipa na FPB (do endereço .../equipa_12345)", widget: number, value_type: int, required: false}
+              - {name: hide_players, label: Não mostrar o plantel no site, widget: boolean, default: false, required: false}
               - name: players
-                label: Plantel
+                label: "Plantel manual (se preencher, substitui o da FPB)"
                 widget: list
                 label_singular: jogador
                 required: false
