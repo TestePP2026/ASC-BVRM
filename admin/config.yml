@@ -1,0 +1,79 @@
+backend:
+  name: github
+  repo: O-TEU-UTILIZADOR/asc-bvrm-site   # trocar pelo repositório real
+  branch: main
+media_folder: assets/uploads
+public_folder: /assets/uploads
+locale: pt
+collections:
+  - name: dados
+    label: Conteúdo do site
+    files:
+      - name: games-manual
+        label: Jogos (corrigir, esconder ou acrescentar)
+        file: data/games-manual.json
+        fields:
+          - name: games
+            label: Alterações a jogos
+            widget: list
+            label_singular: jogo
+            summary: "{{fields.date}} {{fields.home}} vs {{fields.away}}"
+            hint: "Para corrigir ou esconder um jogo da FPB, preencha o ID dele. Sem ID, cria um jogo novo (amigável, torneio, etc.)."
+            fields:
+              - {name: id, label: "ID da FPB (só para corrigir ou esconder)", widget: number, value_type: int, required: false}
+              - {name: hidden, label: Esconder este jogo, widget: boolean, default: false, required: false}
+              - {name: date, label: "Data (AAAA-MM-DD)", widget: string, pattern: ["^\\d{4}-\\d{2}-\\d{2}$", "Use AAAA-MM-DD"], required: false}
+              - {name: time, label: "Hora (HH:MM)", widget: string, required: false}
+              - {name: home, label: Equipa da casa, widget: string, required: false}
+              - {name: away, label: Equipa visitante, widget: string, required: false}
+              - {name: venue, label: Pavilhão, widget: string, required: false}
+              - {name: city, label: Localidade, widget: string, required: false}
+              - {name: comp, label: "Competição (ex.: Campeonato Regional Sub-14 Masculino)", widget: string, required: false}
+              - {name: hs, label: Pontos da equipa da casa, widget: number, value_type: int, required: false}
+              - {name: as, label: Pontos da equipa visitante, widget: number, value_type: int, required: false}
+      - name: teams
+        label: Equipas e plantéis
+        file: data/teams.json
+        fields:
+          - name: teams
+            label: Equipas
+            widget: list
+            label_singular: equipa
+            summary: "{{fields.name}}"
+            fields:
+              - {name: name, label: Nome da equipa, widget: string}
+              - {name: category, label: Escalão, widget: string, required: false}
+              - {name: gender, label: Género, widget: select, options: [Masculino, Feminino, Misto], required: false}
+              - {name: competition, label: Competição, widget: string, required: false}
+              - {name: coach, label: Treinador, widget: string, required: false}
+              - {name: photo, label: Fotografia da equipa, widget: image, required: false}
+              - {name: fpb_url, label: Ligação da classificação na FPB, widget: string, required: false}
+              - name: players
+                label: Plantel
+                widget: list
+                label_singular: jogador
+                required: false
+                summary: "{{fields.number}} {{fields.name}}"
+                fields:
+                  - {name: number, label: Número, widget: number, value_type: int, required: false}
+                  - {name: name, label: Nome, widget: string}
+                  - {name: position, label: Posição, widget: string, required: false}
+      - name: club
+        label: Dados do clube
+        file: data/club.json
+        fields:
+          - {name: name, label: Nome curto, widget: string}
+          - {name: full_name, label: Nome completo, widget: string}
+          - {name: match, label: "Texto que identifica a nossa equipa nos jogos", widget: string}
+          - {name: founded, label: Fundação, widget: string}
+          - {name: venue, label: Pavilhão, widget: string}
+          - {name: address, label: Morada, widget: string}
+          - {name: email, label: Email, widget: string}
+          - {name: phone, label: Telefone, widget: string}
+          - name: links
+            label: Ligações
+            widget: list
+            label_singular: ligação
+            fields:
+              - {name: label, label: Texto, widget: string}
+              - {name: url, label: Endereço, widget: string}

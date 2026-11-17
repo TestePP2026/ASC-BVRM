@@ -1,0 +1,8 @@
+{"teams": [
+ {"name": "Seniores masculinos", "category": "Sénior", "gender": "Masculino", "competition": "2ª Divisão Masculina", "fpb_url": "https://www.fpb.pt/competicao/11443", "players": []},
+ {"name": "Seniores femininos", "category": "Sénior", "gender": "Feminino", "competition": "2ª Divisão Feminina", "fpb_url": "https://www.fpb.pt/competicao/11447", "players": []},
+ {"name": "Sub-16 masculinos", "category": "Sub-16", "gender": "Masculino", "competition": "Campeonato Regional Sub-16", "players": []},
+ {"name": "Sub-14 masculinos", "category": "Sub-14", "gender": "Masculino", "competition": "Campeonato Regional Sub-14", "players": []},
+ {"name": "Sub-12 masculinos", "category": "Sub-12", "gender": "Masculino", "competition": "Campeonato Regional Sub-12", "players": []},
+ {"name": "Sub-12 femininos", "category": "Sub-12", "gender": "Feminino", "competition": "Campeonato Regional Sub-12", "players": []}
+]}

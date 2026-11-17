@@ -1,0 +1,16 @@
+{
+ "name": "ASC/BVRM",
+ "full_name": "Atlético Sport Clube / Bombeiros Voluntários de Reguengos de Monsaraz",
+ "match": "ASC/BVRM",
+ "founded": "29 de outubro de 1975",
+ "venue": "Pavilhão Municipal Reguengos, Arq. Rosado Correia",
+ "address": "Campo 25 de Abril, Quartel dos Bombeiros, Apartado 48, 7200-386 Reguengos de Monsaraz",
+ "email": "atletico.monsaraz@sapo.pt",
+ "phone": "266 501 264",
+ "links": [
+  {"label": "Blogue", "url": "https://asc-bvrm.blogspot.pt"},
+  {"label": "Facebook", "url": "https://www.facebook.com/ascbvrm"},
+  {"label": "Instagram", "url": "https://www.instagram.com/ascbvrm.oficial"},
+  {"label": "Página do clube na FPB", "url": "https://www.fpb.pt/calendario/clube_43"}
+ ]
+}
