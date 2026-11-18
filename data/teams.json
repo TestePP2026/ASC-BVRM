@@ -7,7 +7,8 @@
    "competition": "2ª Divisão Masculina",
    "fpb_url": "https://www.fpb.pt/competicao/11443",
    "players": [],
-   "fpb_id": 63236
+   "fpb_id": 63236,
+   "coach": "Principal: Carlos Costa, Paulo Leitão, Mário Amaral. Adjunto: José Catrapolo"
   },
   {
    "name": "Seniores femininos",
@@ -16,7 +17,8 @@
    "competition": "2ª Divisão Feminina",
    "fpb_url": "https://www.fpb.pt/competicao/11447",
    "players": [],
-   "fpb_id": 63597
+   "fpb_id": 63597,
+   "coach": "Principal: Carlos Costa, Paulo Leitão, Mário Amaral, Carolina Coelho"
   },
   {
    "name": "Sub-16 masculinos",
@@ -24,7 +26,9 @@
    "gender": "Masculino",
    "competition": "Campeonato Regional Sub-16",
    "players": [],
-   "fpb_id": 64410
+   "fpb_id": 64410,
+   "coach": "Principal: Carlos Costa, Paulo Marcão, Mário Amaral, Carolina Coelho. Adjunto: José Catrapolo",
+   "hide_players": true
   },
   {
    "name": "Sub-14 masculinos",
@@ -32,7 +36,9 @@
    "gender": "Masculino",
    "competition": "Campeonato Regional Sub-14",
    "players": [],
-   "fpb_id": 64409
+   "fpb_id": 64409,
+   "coach": "Principal: Carlos Costa, Paulo Marcão, Cristiana Lopes, Miguel Singéis",
+   "hide_players": true
   },
   {
    "name": "Mini-12 masculinos",
@@ -40,7 +46,9 @@
    "gender": "Masculino",
    "competition": "Campeonato Regional Mini-12",
    "players": [],
-   "fpb_id": 64408
+   "fpb_id": 64408,
+   "coach": "Principal: Ricardo Baleizão, Miguel Singéis. Adjunto: Cristiana Lopes",
+   "hide_players": true
   },
   {
    "name": "Mini-12 femininos",
@@ -48,7 +56,29 @@
    "gender": "Feminino",
    "competition": "Campeonato Regional Mini-12",
    "players": [],
-   "fpb_id": 64411
+   "fpb_id": 64411,
+   "coach": "Principal: Carolina Coelho, Cristiana Lopes",
+   "hide_players": true
+  },
+  {
+   "name": "Mini-10 masculinos",
+   "category": "Mini-10",
+   "gender": "Masculino",
+   "competition": "",
+   "coach": "Principal: Cristiana Lopes, Ricardo Baleizão, Inês Alcaparra, Miguel Singéis",
+   "players": [],
+   "hide_players": true,
+   "fpb_id": 64407
+  },
+  {
+   "name": "Mini-8 masculinos",
+   "category": "Mini-8",
+   "gender": "Masculino",
+   "competition": "",
+   "coach": "Principal: Inês Alcaparra, Maria Barreto",
+   "players": [],
+   "hide_players": true,
+   "fpb_id": 64406
   }
  ]
 }

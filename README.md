@@ -20,3 +20,5 @@ Cada gravação cria um commit e o site atualiza em cerca de um minuto.
 
 ## Plantéis
 `scripts/rosters.py` abre a página de cada equipa na FPB (campo "Número da equipa na FPB" no painel) com um navegador automático e grava `data/rosters.json`. No site, o plantel manual de uma equipa (se existir) substitui o da FPB. "Não mostrar o plantel no site" esconde-o por completo (útil para escalões de formação). As fotografias dos atletas não são copiadas.
+
+Equipas com "Não mostrar o plantel no site" ligado não têm os nomes guardados no repositório (o ficheiro `data/rosters.json` é público). Para publicar um plantel: desligar a opção no painel e correr o workflow.

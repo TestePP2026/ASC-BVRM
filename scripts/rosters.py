@@ -23,7 +23,7 @@ def jogadores(html):
         link = p.find("a", href=re.compile(r"/atletas/\d+"))
         out.append({
             "number": int(num) if num.isdigit() else None,
-            "name": nome.get_text(strip=True),
+            "name": (lambda n: n.title() if n.isupper() else n)(nome.get_text(strip=True)),
             "position": pos,
             "fpb_id": int(re.search(r"(\d+)", link["href"])[1]) if link else None,
         })
@@ -36,13 +36,15 @@ def main():
     equipas = json.loads((DATA / "teams.json").read_text("utf-8"))["teams"]
     ficheiro = DATA / "rosters.json"
     antigo = json.loads(ficheiro.read_text("utf-8")) if ficheiro.exists() else {"teams": {}}
-    novos, falhas, tentadas = dict(antigo["teams"]), [], 0
+    visiveis = {str(t["fpb_id"]) for t in equipas if t.get("fpb_id") and not t.get("hide_players")}
+    novos = {k: v for k, v in antigo["teams"].items() if k in visiveis}
+    falhas, tentadas = [], 0
     with sync_playwright() as pw:
         browser = pw.chromium.launch()
         page = browser.new_page()
         for t in equipas:
             fid = t.get("fpb_id")
-            if not fid:
+            if str(fid) not in visiveis:
                 continue
             tentadas += 1
             try:

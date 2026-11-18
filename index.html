@@ -108,7 +108,7 @@ const tl=q("#teams");
 (teams?.teams||[]).forEach(t=>{const d=el("details","tm"),s=el("summary");
  s.append(el("b",0,t.name),el("small",0,t.competition||[t.category,t.gender].filter(Boolean).join(" ")));d.append(s);
  if(t.photo){const i=el("img");i.src=t.photo;i.alt="Equipa "+t.name;i.loading="lazy";d.append(i)}
- if(t.coach)d.append(el("p",0,"Treinador: "+t.coach));
+ if(t.coach)d.append(el("p",0,"Equipa técnica: "+t.coach));
  const p=[...(t.hide_players?[]:(t.players?.length?t.players:(ros?.teams?.[t.fpb_id]||[])))].sort((a,b)=>(a.number??999)-(b.number??999));
  if(p.length){const ul=el("ul");p.forEach(x=>{const li=el("li");li.append(el("span",0,x.number??""),el("div",0,x.name+(x.position?`, ${x.position}`:"")));ul.append(li)});d.append(ul)}
  else d.append(el("p","mut",t.hide_players?"Plantel não publicado.":"Plantel por publicar."));

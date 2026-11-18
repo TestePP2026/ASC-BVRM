@@ -45,7 +45,7 @@ collections:
               - {name: category, label: Escalão, widget: string, required: false}
               - {name: gender, label: Género, widget: select, options: [Masculino, Feminino, Misto], required: false}
               - {name: competition, label: Competição, widget: string, required: false}
-              - {name: coach, label: Treinador, widget: string, required: false}
+              - {name: coach, label: Equipa técnica (texto livre), widget: string, required: false}
               - {name: photo, label: Fotografia da equipa, widget: image, required: false}
               - {name: fpb_url, label: Ligação da classificação na FPB, widget: string, required: false}
               - {name: fpb_id, label: "Número da equipa na FPB (do endereço .../equipa_12345)", widget: number, value_type: int, required: false}
