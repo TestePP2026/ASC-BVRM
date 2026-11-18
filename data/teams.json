@@ -27,8 +27,7 @@
    "competition": "Campeonato Regional Sub-16",
    "players": [],
    "fpb_id": 64410,
-   "coach": "Principal: Carlos Costa, Paulo Marcão, Mário Amaral, Carolina Coelho. Adjunto: José Catrapolo",
-   "hide_players": true
+   "coach": "Principal: Carlos Costa, Paulo Marcão, Mário Amaral, Carolina Coelho. Adjunto: José Catrapolo"
   },
   {
    "name": "Sub-14 masculinos",
@@ -37,8 +36,7 @@
    "competition": "Campeonato Regional Sub-14",
    "players": [],
    "fpb_id": 64409,
-   "coach": "Principal: Carlos Costa, Paulo Marcão, Cristiana Lopes, Miguel Singéis",
-   "hide_players": true
+   "coach": "Principal: Carlos Costa, Paulo Marcão, Cristiana Lopes, Miguel Singéis"
   },
   {
    "name": "Mini-12 masculinos",
@@ -47,8 +45,7 @@
    "competition": "Campeonato Regional Mini-12",
    "players": [],
    "fpb_id": 64408,
-   "coach": "Principal: Ricardo Baleizão, Miguel Singéis. Adjunto: Cristiana Lopes",
-   "hide_players": true
+   "coach": "Principal: Ricardo Baleizão, Miguel Singéis. Adjunto: Cristiana Lopes"
   },
   {
    "name": "Mini-12 femininos",
@@ -57,8 +54,7 @@
    "competition": "Campeonato Regional Mini-12",
    "players": [],
    "fpb_id": 64411,
-   "coach": "Principal: Carolina Coelho, Cristiana Lopes",
-   "hide_players": true
+   "coach": "Principal: Carolina Coelho, Cristiana Lopes"
   },
   {
    "name": "Mini-10 masculinos",
@@ -67,7 +63,6 @@
    "competition": "",
    "coach": "Principal: Cristiana Lopes, Ricardo Baleizão, Inês Alcaparra, Miguel Singéis",
    "players": [],
-   "hide_players": true,
    "fpb_id": 64407
   },
   {
@@ -77,7 +72,6 @@
    "competition": "",
    "coach": "Principal: Inês Alcaparra, Maria Barreto",
    "players": [],
-   "hide_players": true,
    "fpb_id": 64406
   }
  ]

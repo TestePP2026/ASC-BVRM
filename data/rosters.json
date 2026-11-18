@@ -196,6 +196,432 @@
     "position": "",
     "fpb_id": 252997
    }
+  ],
+  "64410": [
+   {
+    "number": 23,
+    "name": "António Godinho",
+    "position": "",
+    "fpb_id": 252994
+   },
+   {
+    "number": 45,
+    "name": "David Silvério",
+    "position": "",
+    "fpb_id": 282029
+   },
+   {
+    "number": 62,
+    "name": "Gabriel Santa",
+    "position": "",
+    "fpb_id": 314667
+   },
+   {
+    "number": 7,
+    "name": "Gonçalo Carraça",
+    "position": "",
+    "fpb_id": 277187
+   },
+   {
+    "number": 14,
+    "name": "Guilherme Almeida",
+    "position": "",
+    "fpb_id": 243890
+   },
+   {
+    "number": 84,
+    "name": "Gustavo Santos",
+    "position": "",
+    "fpb_id": 236404
+   },
+   {
+    "number": null,
+    "name": "Luiz Nogueira",
+    "position": "",
+    "fpb_id": 297212
+   },
+   {
+    "number": 31,
+    "name": "Martim Paixão",
+    "position": "",
+    "fpb_id": 302094
+   },
+   {
+    "number": 12,
+    "name": "Rodrigo Catrapolo",
+    "position": "",
+    "fpb_id": 286903
+   },
+   {
+    "number": 1,
+    "name": "Rodrigo Couto",
+    "position": "",
+    "fpb_id": 256027
+   },
+   {
+    "number": 16,
+    "name": "Santiago Jacinto",
+    "position": "",
+    "fpb_id": 315058
+   },
+   {
+    "number": 55,
+    "name": "Simão Flores",
+    "position": "",
+    "fpb_id": 297480
+   },
+   {
+    "number": 17,
+    "name": "Tiago Semião",
+    "position": "",
+    "fpb_id": 276648
+   },
+   {
+    "number": 2,
+    "name": "Tomás Marcão",
+    "position": "",
+    "fpb_id": 243877
+   },
+   {
+    "number": 92,
+    "name": "Vicente Pitéu",
+    "position": "",
+    "fpb_id": 239241
+   }
+  ],
+  "64409": [
+   {
+    "number": 26,
+    "name": "Afonso Carvalho",
+    "position": "",
+    "fpb_id": 310916
+   },
+   {
+    "number": 37,
+    "name": "Afonso Mestre",
+    "position": "",
+    "fpb_id": 318538
+   },
+   {
+    "number": null,
+    "name": "Diego Vicente",
+    "position": "",
+    "fpb_id": 325226
+   },
+   {
+    "number": 7,
+    "name": "Diogo Massa",
+    "position": "",
+    "fpb_id": 262657
+   },
+   {
+    "number": 6,
+    "name": "Francisco Leitão",
+    "position": "",
+    "fpb_id": 285246
+   },
+   {
+    "number": 5,
+    "name": "Gabriel Farófia",
+    "position": "",
+    "fpb_id": 307183
+   },
+   {
+    "number": 11,
+    "name": "Gabriel Nunes",
+    "position": "",
+    "fpb_id": 278870
+   },
+   {
+    "number": 22,
+    "name": "Gabriel Rodrigues",
+    "position": "",
+    "fpb_id": 315161
+   },
+   {
+    "number": 8,
+    "name": "Guilherme Rosado",
+    "position": "",
+    "fpb_id": 274629
+   },
+   {
+    "number": null,
+    "name": "Guilherme Simões",
+    "position": "",
+    "fpb_id": 325113
+   },
+   {
+    "number": 20,
+    "name": "José Godinho",
+    "position": "",
+    "fpb_id": 307853
+   },
+   {
+    "number": 80,
+    "name": "João Singéis",
+    "position": "",
+    "fpb_id": 285089
+   },
+   {
+    "number": 3,
+    "name": "Lucas Caeiro",
+    "position": "",
+    "fpb_id": 312489
+   },
+   {
+    "number": 18,
+    "name": "Lucas Furtado",
+    "position": "",
+    "fpb_id": 288350
+   },
+   {
+    "number": 10,
+    "name": "Mateus Farófia",
+    "position": "",
+    "fpb_id": 303102
+   },
+   {
+    "number": 99,
+    "name": "Nhanga Viegas",
+    "position": "",
+    "fpb_id": 302946
+   },
+   {
+    "number": 67,
+    "name": "Simão Vital",
+    "position": "",
+    "fpb_id": 323311
+   },
+   {
+    "number": 97,
+    "name": "Tomás Silva",
+    "position": "",
+    "fpb_id": 320978
+   },
+   {
+    "number": 34,
+    "name": "Vicente Rebocho",
+    "position": "",
+    "fpb_id": 315162
+   }
+  ],
+  "64408": [
+   {
+    "number": 26,
+    "name": "Afonso Carvalho",
+    "position": "",
+    "fpb_id": 310916
+   },
+   {
+    "number": 2,
+    "name": "Diogo Pereira",
+    "position": "",
+    "fpb_id": 315160
+   },
+   {
+    "number": 19,
+    "name": "Filipe Almeida",
+    "position": "",
+    "fpb_id": 315166
+   },
+   {
+    "number": 6,
+    "name": "Francisco Leitão",
+    "position": "",
+    "fpb_id": 285246
+   },
+   {
+    "number": 24,
+    "name": "Gabriel Fernandes",
+    "position": "",
+    "fpb_id": 317145
+   },
+   {
+    "number": 22,
+    "name": "Gabriel Rodrigues",
+    "position": "",
+    "fpb_id": 315161
+   },
+   {
+    "number": 8,
+    "name": "Guilherme Rosado",
+    "position": "",
+    "fpb_id": 274629
+   },
+   {
+    "number": 25,
+    "name": "Henrique Almeida",
+    "position": "",
+    "fpb_id": 275356
+   },
+   {
+    "number": 20,
+    "name": "José Godinho",
+    "position": "",
+    "fpb_id": 307853
+   },
+   {
+    "number": 80,
+    "name": "João Singéis",
+    "position": "",
+    "fpb_id": 285089
+   },
+   {
+    "number": 13,
+    "name": "Lourenço Correia",
+    "position": "",
+    "fpb_id": 323782
+   },
+   {
+    "number": 54,
+    "name": "Lourenço Flores",
+    "position": "",
+    "fpb_id": 311667
+   },
+   {
+    "number": 3,
+    "name": "Lucas Caeiro",
+    "position": "",
+    "fpb_id": 312489
+   },
+   {
+    "number": 10,
+    "name": "Mateus Farófia",
+    "position": "",
+    "fpb_id": 303102
+   },
+   {
+    "number": null,
+    "name": "Miguel Pateiro",
+    "position": "",
+    "fpb_id": 323626
+   },
+   {
+    "number": 14,
+    "name": "Santiago Paixão",
+    "position": "",
+    "fpb_id": 302095
+   },
+   {
+    "number": null,
+    "name": "Santiago Trinca",
+    "position": "",
+    "fpb_id": 324523
+   },
+   {
+    "number": null,
+    "name": "Vicente Claré",
+    "position": "",
+    "fpb_id": 320791
+   },
+   {
+    "number": null,
+    "name": "Vladymyr Popescu",
+    "position": "",
+    "fpb_id": 289751
+   }
+  ],
+  "64411": [
+   {
+    "number": 65,
+    "name": "Beatriz Ferro",
+    "position": "",
+    "fpb_id": 321483
+   },
+   {
+    "number": 12,
+    "name": "Carminho Pereira",
+    "position": "",
+    "fpb_id": 315097
+   },
+   {
+    "number": 29,
+    "name": "Joana Martelo",
+    "position": "",
+    "fpb_id": 300319
+   },
+   {
+    "number": 77,
+    "name": "Margarida Canaverde",
+    "position": "",
+    "fpb_id": 323420
+   },
+   {
+    "number": 42,
+    "name": "Sofia Fialho",
+    "position": "",
+    "fpb_id": 298797
+   }
+  ],
+  "64407": [
+   {
+    "number": null,
+    "name": "António Godinho",
+    "position": "",
+    "fpb_id": 316774
+   },
+   {
+    "number": null,
+    "name": "Henrique Caeiro",
+    "position": "",
+    "fpb_id": 311668
+   },
+   {
+    "number": null,
+    "name": "Miguel Furtado",
+    "position": "",
+    "fpb_id": 288325
+   },
+   {
+    "number": null,
+    "name": "Rodrigo Balixa",
+    "position": "",
+    "fpb_id": 315167
+   },
+   {
+    "number": null,
+    "name": "Santiago Correia",
+    "position": "",
+    "fpb_id": 323414
+   },
+   {
+    "number": null,
+    "name": "Tomás Constantino",
+    "position": "",
+    "fpb_id": 315170
+   }
+  ],
+  "64406": [
+   {
+    "number": null,
+    "name": "Bernardo Medinas",
+    "position": "",
+    "fpb_id": 318541
+   },
+   {
+    "number": null,
+    "name": "Gustavo Balixa",
+    "position": "",
+    "fpb_id": 315400
+   },
+   {
+    "number": null,
+    "name": "Jayson Pereira",
+    "position": "",
+    "fpb_id": 323573
+   },
+   {
+    "number": null,
+    "name": "Manuel Leiria",
+    "position": "",
+    "fpb_id": 315398
+   },
+   {
+    "number": null,
+    "name": "Valentin Ivanov",
+    "position": "",
+    "fpb_id": 312716
+   }
   ]
  }
 }

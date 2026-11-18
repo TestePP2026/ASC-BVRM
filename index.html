@@ -43,6 +43,18 @@ dl{display:grid;grid-template-columns:max-content 1fr;gap:.35rem 1.25rem;margin:
 #links{display:flex;gap:1.25rem;flex-wrap:wrap}
 footer{color:var(--mut);font-size:.9rem;padding-top:2rem;padding-bottom:2rem}
 @media(max-width:30rem){.g{grid-template-columns:3.2rem 1fr auto;gap:.6rem}}
+.hero h1{font-size:clamp(1.7rem,5vw,2.6rem);max-width:none;margin-bottom:.4rem}
+.hg{margin-top:.9rem;max-width:42rem}
+.hr{display:grid;grid-template-columns:4.5rem 1fr;gap:.75rem;padding:.6rem 0;border-top:1px solid rgba(255,255,255,.25)}
+.hr b{font-size:1.4rem;font-variant-numeric:tabular-nums}.hr small{display:block;opacity:.8}.hr .ht{font-weight:650}
+a.tm{display:block;text-decoration:none;color:inherit}a.tm:hover{border-color:var(--g)}
+a.tm b{display:block;font-size:1.1rem}a.tm small{display:block;color:var(--mut)}.tn{display:block;margin-top:.35rem;font-size:.9rem}
+.back{display:inline-block;margin-top:1rem;font-weight:600}.th{margin:.4rem 0 0}
+.tp{width:100%;max-width:40rem;border-radius:6px;margin-top:.75rem}
+.roster{display:grid;grid-template-columns:repeat(auto-fill,minmax(11.5rem,1fr));gap:.6rem;margin-top:.75rem}
+.pl{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:.55rem .75rem;display:grid;grid-template-columns:2.8rem 1fr;align-items:center}
+.pl b{grid-row:span 2;font-size:1.6rem;color:var(--g);font-variant-numeric:tabular-nums}.pl small{color:var(--mut)}
+.lk{display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:1.5rem}
 </style>
 </head>
 <body>
@@ -52,6 +64,7 @@ footer{color:var(--mut);font-size:.9rem;padding-top:2rem;padding-bottom:2rem}
 <nav aria-label="Principal"><a href="#jogos">Jogos</a><a href="#equipas">Equipas</a><a href="#clube">Clube</a></nav>
 </header>
 <main>
+<div id="home">
 <section class="hero" id="hero" aria-live="polite">
 <svg class="court" viewBox="0 0 400 260" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="140" y="0" width="120" height="150"/><circle cx="200" cy="150" r="60"/><path d="M40 0v90a160 160 0 0 0 320 0V0"/><circle cx="200" cy="28" r="9"/><path d="M175 14h50"/></svg>
 </section>
@@ -63,6 +76,8 @@ footer{color:var(--mut);font-size:.9rem;padding-top:2rem;padding-bottom:2rem}
 </section>
 <section id="equipas"><h2>Equipas</h2><div class="teams" id="teams"></div></section>
 <section id="clube"><h2>O clube</h2><dl id="club"></dl><div id="links"></div></section>
+</div>
+<section id="team" hidden></section>
 </main>
 <footer><span id="upd"></span></footer>
 <script>
@@ -70,7 +85,7 @@ const q=s=>document.querySelector(s);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
 const get=u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null);
 const MO=["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"],WD=["dom","seg","ter","qua","qui","sex","sáb"];
-const label=(c="")=>{let m=c.match(/sub-?\s?(\d+)/i),k=m?"Sub-"+m[1]:/divis|s[eé]nior/i.test(c)?"Sénior":(m=c.match(/mini\s?-?\s?(\d+)/i))?"Mini "+m[1]:"Outros";return k+(/\bfem/i.test(c)?" F":/\bmas|\bm\b/i.test(c)?" M":"")};
+const label=(c="")=>{let m=c.match(/sub-?\s?(\d+)/i),k=m?(+m[1]<=12?"Mini "+m[1]:"Sub-"+m[1]):/divis|s[eé]nior/i.test(c)?"Sénior":(m=c.match(/mini\s?-?\s?(\d+)/i))?"Mini "+m[1]:"Outros";return k+(/\bfem/i.test(c)?" F":/\bmas|\bm\b/i.test(c)?" M":"")};
 function merge(a=[],man=[]){const m=new Map(a.map(g=>[String(g.id),g])),extra=[];
  for(const x of man){const k=x.id!=null&&x.id!==""?String(x.id):null;
   if(x.hidden){k&&m.delete(k);continue}
@@ -83,9 +98,12 @@ const all=merge(auto?.games,man?.games).map(g=>({...g,cat:label(g.comp)})).sort(
 const played=g=>g.hs!=null&&g.hs!=="",today=new Date().toLocaleDateString("sv-SE");
 const up=all.filter(g=>!played(g)&&g.date>=today),res=all.filter(played).reverse();
 const hero=q("#hero"),n=up[0];
-if(n){hero.append(el("p",0,"Próximo jogo, "+n.cat),el("h1",0,`${n.home} vs ${n.away}`),
- el("p",0,new Date(n.date+"T12:00").toLocaleDateString("pt-PT",{weekday:"long",day:"numeric",month:"long"})+(n.time?`, ${n.time}`:"")),
- el("small",0,[n.venue,n.city].filter(Boolean).join(", ")))}
+if(n){const day=up.filter(g=>g.date===n.date),dt=new Date(n.date+"T12:00"),dd=Math.round((dt-new Date(today+"T12:00"))/864e5);
+ hero.append(el("p",0,day.length>1?"Próximos jogos":"Próximo jogo"),
+  el("h1",0,(dd===0?"Hoje, ":dd===1?"Amanhã, ":"")+dt.toLocaleDateString("pt-PT",{weekday:"long",day:"numeric",month:"long"})));
+ const box=el("div","hg");
+ day.forEach(g=>{const r=el("div","hr"),d=el("div");d.append(el("small",0,g.cat),el("div","ht",`${g.home} vs ${g.away}`),el("small",0,[g.venue,g.city].filter(Boolean).join(", ")));r.append(el("b",0,g.time||"A definir"),d);box.append(r)});
+ hero.append(box)}
 else hero.append(el("h1",0,"Sem jogos marcados"),el("p",0,"Os próximos jogos aparecem aqui assim que a FPB os publicar."));
 const nm=s=>el("span",us(s)?"us":"",s);
 const row=g=>{const d=new Date(g.date+"T12:00"),r=el("div","g"+(us(g.home)?" c":"")),dd=el("div","d"),m=el("div","m"),t=el("div","t"),s=el("div","r");
@@ -104,19 +122,36 @@ const list=(box,arr,empty,k)=>{const a=arr.filter(g=>!f||g.cat===f);box.replaceC
 const draw=()=>{q("#chips").replaceChildren(...["",...cats].map(c=>{const b=el("button",0,c||"Todos");b.type="button";b.setAttribute("aria-pressed",String(c===f));b.onclick=()=>{f=c;draw()};return b}));
  list(q("#up"),up,"Sem jogos marcados neste escalão.","up");list(q("#res"),res,"Ainda sem resultados neste escalão.","res")};
 draw();
+const TITLE=document.title,TT=teams?.teams||[];
+const lab=t=>label(`${t.category||""} ${t.gender||""}`),same=(g,t)=>{const a=lab(t);return a===g.cat||a.startsWith(g.cat+" ")};
+const tid=t=>"equipa-"+(t.fpb_id||t.name.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-"));
+const plist=t=>[...(t.hide_players?[]:(t.players?.length?t.players:(ros?.teams?.[t.fpb_id]||[])))].sort((a,b)=>(a.number??999)-(b.number??999));
+const short=g=>{const d=new Date(g.date+"T12:00");return `${WD[d.getDay()]} ${d.getDate()} ${MO[d.getMonth()]}`+(g.time?`, ${g.time}`:"")};
 const tl=q("#teams");
-(teams?.teams||[]).forEach(t=>{const d=el("details","tm"),s=el("summary");
- s.append(el("b",0,t.name),el("small",0,t.competition||[t.category,t.gender].filter(Boolean).join(" ")));d.append(s);
- if(t.photo){const i=el("img");i.src=t.photo;i.alt="Equipa "+t.name;i.loading="lazy";d.append(i)}
- if(t.coach)d.append(el("p",0,"Equipa técnica: "+t.coach));
- const p=[...(t.hide_players?[]:(t.players?.length?t.players:(ros?.teams?.[t.fpb_id]||[])))].sort((a,b)=>(a.number??999)-(b.number??999));
- if(p.length){const ul=el("ul");p.forEach(x=>{const li=el("li");li.append(el("span",0,x.number??""),el("div",0,x.name+(x.position?`, ${x.position}`:"")));ul.append(li)});d.append(ul)}
- else d.append(el("p","mut",t.hide_players?"Plantel não publicado.":"Plantel por publicar."));
- if(t.fpb_url){const a=el("a",0,"Classificação na FPB");a.href=t.fpb_url;a.rel="noopener";d.append(a)}
- tl.append(d)});
+TT.forEach(t=>{const a=el("a","tm"),nx=up.find(g=>same(g,t)),np=plist(t).length;a.href="#"+tid(t);
+ a.append(el("b",0,t.name),el("small",0,t.competition||[t.category,t.gender].filter(Boolean).join(" ")),el("span","tn",nx?"Próximo jogo: "+short(nx):"Sem jogos marcados"));
+ if(np)a.append(el("span","tn",np+" jogadores"));tl.append(a)});
+const view=q("#team"),home=q("#home");
+const show=()=>{const m=location.hash.match(/^#(equipa-[\w-]+)$/),t=m&&TT.find(x=>tid(x)===m[1]);
+ if(!t){home.hidden=false;view.hidden=true;document.title=TITLE;if(location.hash)document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();return}
+ home.hidden=true;view.hidden=false;view.replaceChildren();document.title=t.name+" | ASC/BVRM Basquetebol";
+ const nx=up.filter(g=>same(g,t)),rs=res.filter(g=>same(g,t)),p=plist(t),back=el("a","back","Voltar às equipas");back.href="#equipas";
+ const sec=(h,arr,none)=>{view.append(el("h3",0,h));const d=el("div");arr.forEach(g=>d.append(row(g)));if(!arr.length)d.append(el("p","mut",none));view.append(d)};
+ view.append(back,el("h2","th",t.name),el("p","mut",t.competition||""));
+ if(t.coach)view.append(el("p",0,"Equipa técnica: "+t.coach));
+ if(t.photo){const i=el("img","tp");i.src=t.photo;i.alt="Equipa "+t.name;view.append(i)}
+ sec("Próximos jogos",nx,"Sem jogos marcados.");sec("Resultados",rs,"Ainda sem resultados.");
+ view.append(el("h3",0,"Plantel"));
+ if(p.length){const gr=el("div","roster");p.forEach(x=>{const c=el("div","pl");c.append(el("b",0,x.number??"–"),el("span",0,x.name));if(x.position)c.append(el("small",0,x.position));gr.append(c)});view.append(gr)}
+ else view.append(el("p","mut",t.hide_players?"Plantel não publicado.":"Plantel por publicar."));
+ const ln=el("p","lk");
+ if(t.fpb_id){const a=el("a",0,"Página da equipa na FPB");a.href="https://www.fpb.pt/equipa/equipa_"+t.fpb_id;a.rel="noopener";ln.append(a)}
+ if(t.fpb_url){const a=el("a",0,"Classificação na FPB");a.href=t.fpb_url;a.rel="noopener";ln.append(a)}
+ view.append(ln);scrollTo(0,0)};
 if(club){[["Pavilhão",club.venue],["Morada",club.address],["Email",club.email],["Telefone",club.phone],["Fundado em",club.founded]].filter(x=>x[1]).forEach(([k,v])=>q("#club").append(el("dt",0,k),el("dd",0,v)));
  (club.links||[]).forEach(x=>{const a=el("a",0,x.label);a.href=x.url;a.rel="noopener";q("#links").append(a)})}
 q("#upd").textContent="Jogos e resultados da Federação Portuguesa de Basquetebol"+(auto?.updated?", atualizados em "+new Date(auto.updated).toLocaleString("pt-PT",{dateStyle:"long",timeStyle:"short"}):"")+".";
+show();addEventListener("hashchange",show);
 })();
 </script>
 </body>
