@@ -55,13 +55,39 @@ a.tm b{display:block;font-size:1.1rem}a.tm small{display:block;color:var(--mut)}
 .pl{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:.55rem .75rem;display:grid;grid-template-columns:2.8rem 1fr;align-items:center}
 .pl b{grid-row:span 2;font-size:1.6rem;color:var(--g);font-variant-numeric:tabular-nums}.pl small{color:var(--mut)}
 .lk{display:flex;gap:1.25rem;flex-wrap:wrap;margin-top:1.5rem}
+#load{position:fixed;inset:0;z-index:99;display:grid;place-items:center;background:var(--bg);transition:opacity .3s}
+#load[hidden]{display:none}#load.out{opacity:0}
+.lw{position:relative;font-size:clamp(2.2rem,9vw,4rem);font-weight:800;letter-spacing:.04em;color:var(--g);line-height:1.2}
+.lt{display:flex}.lt span{display:inline-block;animation:lt 2.4s infinite both;animation-delay:calc(.16s + var(--i)*.245s)}
+.ball{position:absolute;bottom:0;left:-8%;width:1em;height:1em;margin-left:-.5em;animation:run 2.4s linear infinite}
+.ball svg{display:block;width:100%;height:100%;animation:bn .5s ease-in-out infinite}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@keyframes run{0%{left:-8%}92%,100%{left:104%}}
+@keyframes bn{0%,100%{transform:translateY(-.9em)}50%{transform:translateY(0) scale(1.1,.88)}}
+@keyframes lt{0%{opacity:1;transform:none}5%{opacity:0;transform:translateY(.35em) scale(.6)}85%{opacity:0;transform:translateY(.35em) scale(.6)}100%{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.lt span,.ball,.ball svg{animation:none}.ball{display:none}}
+.fi{display:inline-block;margin-top:.15rem;font-size:.85rem}
+.hl{max-width:42rem;font-size:1.1rem}
+.hy{display:grid;grid-template-columns:5.5rem 1fr;gap:1rem;padding:1.25rem 0;border-top:1px solid var(--line)}
+.hy>b{font-size:1.8rem;color:var(--g);font-variant-numeric:tabular-nums;line-height:1.1}
+.hy h3{margin:0 0 .35rem}.hy p{margin:.35rem 0;max-width:42rem}
+.hy figure{margin:.75rem 0 0;max-width:38rem}.hy img{display:block;width:100%;height:auto;border-radius:6px}.hy figcaption{color:var(--mut);font-size:.9rem;margin-top:.3rem}
+@media(max-width:30rem){.hy{grid-template-columns:1fr;gap:.25rem}}
 </style>
 </head>
 <body>
+<div id="load" role="status" hidden><div class="lw"><div class="lt" aria-hidden="true"><span style="--i:0">A</span><span style="--i:1">S</span><span style="--i:2">C</span><span style="--i:3">/</span><span style="--i:4">B</span><span style="--i:5">V</span><span style="--i:6">R</span><span style="--i:7">M</span></div>
+<div class="ball" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#e0701a" stroke="#7a3508" stroke-width="1.2"/><path d="M12 1v22M1 12h22M4.5 4c5 4 5 12 0 16M19.5 4c-5 4-5 12 0 16" fill="none" stroke="#7a3508" stroke-width="1"/></svg></div>
+<span class="sr">A carregar</span></div></div>
+<script>
+var L=document.getElementById("load"),demo=/[?&]carregamento/.test(location.search),t0=Date.now(),tm=setTimeout(function(){if(L){L.hidden=false;t0=Date.now()}},demo?0:350);
+function loaded(){if(!demo)clearTimeout(tm);if(!L||(L.hidden&&!demo))return;var w=Math.max(0,(demo?4000:1300)-(Date.now()-t0));setTimeout(function(){L.classList.add("out");setTimeout(function(){L.hidden=true},300)},w)}
+setTimeout(loaded,8000);
+</script>
 <header>
 <img src="assets/logo.png" alt="Emblema do ASC/BVRM" width="44" height="48">
 <div><b>ASC/BVRM</b><small>Basquetebol, Reguengos de Monsaraz</small></div>
-<nav aria-label="Principal"><a href="#jogos">Jogos</a><a href="#equipas">Equipas</a><a href="#clube">Clube</a></nav>
+<nav aria-label="Principal"><a href="#jogos">Jogos</a><a href="#equipas">Equipas</a><a href="#historia" id="nh" hidden>História</a><a href="#clube">Clube</a></nav>
 </header>
 <main>
 <div id="home">
@@ -75,6 +101,7 @@ a.tm b{display:block;font-size:1.1rem}a.tm small{display:block;color:var(--mut)}
 <h3>Resultados</h3><div id="res"></div>
 </section>
 <section id="equipas"><h2>Equipas</h2><div class="teams" id="teams"></div></section>
+<section id="historia" hidden><h2>História</h2><div id="hist"></div></section>
 <section id="clube"><h2>O clube</h2><dl id="club"></dl><div id="links"></div></section>
 </div>
 <section id="team" hidden></section>
@@ -92,7 +119,7 @@ function merge(a=[],man=[]){const m=new Map(a.map(g=>[String(g.id),g])),extra=[]
   if(k&&m.has(k)){const o=m.get(k);for(const f in x)if(f!=="hidden"&&x[f]!==""&&x[f]!=null)o[f]=x[f]}else extra.push(x)}
  return[...m.values(),...extra]}
 (async()=>{
-const [club,auto,man,teams,ros]=await Promise.all(["club","games","games-manual","teams","rosters"].map(n=>get(`data/${n}.json`)));
+const [club,auto,man,teams,ros,hi]=await Promise.all(["club","games","games-manual","teams","rosters","history"].map(n=>get(`data/${n}.json`)));
 const re=new RegExp(club?.match||"ASC/BVRM","i"),us=n=>re.test(n||"");
 const all=merge(auto?.games,man?.games).map(g=>({...g,cat:label(g.comp)})).sort((a,b)=>(a.date+(a.time||"")).localeCompare(b.date+(b.time||"")));
 const played=g=>g.hs!=null&&g.hs!=="",today=new Date().toLocaleDateString("sv-SE");
@@ -113,6 +140,7 @@ const row=g=>{const d=new Date(g.date+"T12:00"),r=el("div","g"+(us(g.home)?" c":
  if(played(g)){const x=us(g.home)?[g.hs,g.as]:[g.as,g.hs],w=x[0]>x[1]?"v":x[0]<x[1]?"l":"";
   s.className="r "+w;s.append(`${g.hs}–${g.as}`,el("small",0,w==="v"?"Vitória":w==="l"?"Derrota":"Empate"))}
  else s.textContent=g.time||"Hora por definir";
+ if(g.id){const a=el("a","fi","Ficha do jogo");a.href="https://www.fpb.pt/ficha-de-jogo?internalID="+g.id;a.rel="noopener";m.append(a)}
  r.append(dd,m,s);return r};
 let f="";const open={},cats=[...new Set(all.map(g=>g.cat))].sort();
 const list=(box,arr,empty,k)=>{const a=arr.filter(g=>!f||g.cat===f);box.replaceChildren();
@@ -130,6 +158,7 @@ const short=g=>{const d=new Date(g.date+"T12:00");return `${WD[d.getDay()]} ${d.
 const tl=q("#teams");
 TT.forEach(t=>{const a=el("a","tm"),nx=up.find(g=>same(g,t)),np=plist(t).length;a.href="#"+tid(t);
  a.append(el("b",0,t.name),el("small",0,t.competition||[t.category,t.gender].filter(Boolean).join(" ")),el("span","tn",nx?"Próximo jogo: "+short(nx):"Sem jogos marcados"));
+ const lr=res.find(g=>same(g,t));if(lr){const x=us(lr.home)?[lr.hs,lr.as]:[lr.as,lr.hs];a.append(el("span","tn",`Último resultado: ${x[0]}–${x[1]} ${x[0]>x[1]?"(vitória)":x[0]<x[1]?"(derrota)":"(empate)"}`))}
  if(np)a.append(el("span","tn",np+" jogadores"));tl.append(a)});
 const view=q("#team"),home=q("#home");
 const show=()=>{const m=location.hash.match(/^#(equipa-[\w-]+)$/),t=m&&TT.find(x=>tid(x)===m[1]);
@@ -151,7 +180,13 @@ const show=()=>{const m=location.hash.match(/^#(equipa-[\w-]+)$/),t=m&&TT.find(x
 if(club){[["Pavilhão",club.venue],["Morada",club.address],["Email",club.email],["Telefone",club.phone],["Fundado em",club.founded]].filter(x=>x[1]).forEach(([k,v])=>q("#club").append(el("dt",0,k),el("dd",0,v)));
  (club.links||[]).forEach(x=>{const a=el("a",0,x.label);a.href=x.url;a.rel="noopener";q("#links").append(a)})}
 q("#upd").textContent="Jogos e resultados da Federação Portuguesa de Basquetebol"+(auto?.updated?", atualizados em "+new Date(auto.updated).toLocaleString("pt-PT",{dateStyle:"long",timeStyle:"short"}):"")+".";
-show();addEventListener("hashchange",show);
+if(hi?.items?.length){q("#historia").hidden=false;q("#nh").hidden=false;const H=q("#hist");
+ if(hi.intro)H.append(el("p","hl",hi.intro));
+ hi.items.forEach(x=>{const r=el("div","hy"),c=el("div");c.append(el("h3",0,x.title||""));
+  (x.text||"").split(/\n\s*\n/).filter(Boolean).forEach(t=>c.append(el("p",0,t)));
+  if(x.photo){const f=el("figure"),i=el("img");i.src=x.photo;i.alt=x.caption||x.title||"";i.loading="lazy";f.append(i);if(x.caption)f.append(el("figcaption",0,x.caption));c.append(f)}
+  r.append(el("b",0,x.year||""),c);H.append(r)})}
+show();addEventListener("hashchange",show);loaded();
 })();
 </script>
 </body>

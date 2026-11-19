@@ -79,3 +79,19 @@ collections:
             fields:
               - {name: label, label: Texto, widget: string}
               - {name: url, label: Endereço, widget: string}
+      - name: history
+        label: História do clube
+        file: data/history.json
+        fields:
+          - {name: intro, label: Texto de abertura, widget: text, required: false}
+          - name: items
+            label: Marcos da história
+            widget: list
+            label_singular: marco
+            summary: "{{fields.year}} {{fields.title}}"
+            fields:
+              - {name: year, label: Ano, widget: string}
+              - {name: title, label: Título, widget: string}
+              - {name: text, label: Texto (uma linha em branco entre parágrafos), widget: text, required: false}
+              - {name: photo, label: Fotografia, widget: image, required: false}
+              - {name: caption, label: Legenda da fotografia, widget: string, required: false}
