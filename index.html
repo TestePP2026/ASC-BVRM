@@ -73,6 +73,31 @@ a.tm b{display:block;font-size:1.1rem}a.tm small{display:block;color:var(--mut)}
 .hy h3{margin:0 0 .35rem}.hy p{margin:.35rem 0;max-width:42rem}
 .hy figure{margin:.75rem 0 0;max-width:38rem}.hy img{display:block;width:100%;height:auto;border-radius:6px}.hy figcaption{color:var(--mut);font-size:.9rem;margin-top:.3rem}
 @media(max-width:30rem){.hy{grid-template-columns:1fr;gap:.25rem}}
+:root{--soft:#e6f0e8}
+@media(prefers-color-scheme:dark){:root{--soft:#1b2a20}.r.v,.r.v small,.r.l,.r.l small{color:#0f1511}}
+header{display:block;max-width:none;margin:0;padding:0;position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.in{max-width:68rem;margin:auto;padding:.7rem 1rem;display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
+header img{width:40px}nav{overflow-x:auto;white-space:nowrap;gap:.2rem}nav a{padding:.35rem .7rem;border-radius:6px}nav a:hover{background:var(--soft);text-decoration:none}
+main{max-width:68rem}
+footer{max-width:none;margin-top:4rem;padding:0;background:var(--gd);color:#dfeee4}footer .in{justify-content:space-between;padding:1.75rem 1rem}
+.fl{display:flex;gap:.75rem;align-items:center}.fl img{width:36px}.fl b{display:block;color:#fff}.fl span{font-size:.85rem}#upd{font-size:.85rem;opacity:.8;max-width:28rem}
+.hero{padding:2rem;border-radius:10px;min-height:0;margin-top:1rem}.hero>p:first-of-type{opacity:.85;font-weight:600;margin:0}
+.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);margin:.25rem 0 1rem;max-width:none}
+.hg{display:grid;gap:.5rem;margin:0;max-width:44rem}.hr{background:rgba(255,255,255,.09);border:0;border-radius:8px;padding:.7rem .9rem;align-items:center;grid-template-columns:4.6rem 1fr}
+.hr b{background:#fff;color:var(--gd);border-radius:6px;padding:.25rem 0;text-align:center;font-size:1.15rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(8rem,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:1rem}
+.stats div{background:var(--card);padding:.8rem 1rem}.stats b{display:block;font-size:1.9rem;line-height:1;color:var(--g)}.stats span{color:var(--mut);font-size:.9rem}
+.sh{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:.6rem;margin:3.5rem 0 1rem}.sh h2{margin:0;font-size:1.9rem}.sh p{margin:0;color:var(--mut)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}.cols h3{margin-top:0}@media(max-width:52rem){.cols{grid-template-columns:1fr}}
+.g{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--line);border-radius:8px;margin-bottom:.5rem;padding:.7rem .9rem}.g.c{border-left-color:var(--g)}
+.m>small:first-child{display:inline-block;background:var(--soft);color:var(--g);font-weight:600;font-size:.78rem;padding:.05rem .55rem;border-radius:99px;margin-bottom:.2rem}
+.r{background:var(--soft);padding:.35rem .6rem;border-radius:6px;min-width:4.2rem;text-align:center}.r.v{background:var(--g);color:#fff}.r.v small,.r.l small{color:inherit}.r.l{background:var(--l);color:#fff}
+.teams{display:block}.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:.75rem}.gh{font-size:.95rem;color:var(--mut);margin:1.5rem 0 .6rem}
+a.tm{padding:1rem 1.1rem;border-top:4px solid var(--g);transition:transform .15s,box-shadow .15s}a.tm:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.1)}
+a.tm b{font-size:1.3rem;line-height:1.15}.tn{border-top:1px solid var(--line);margin-top:.5rem;padding-top:.4rem}
+.tvh{background:var(--gd);color:#fff;border-radius:10px;padding:1.25rem 1.5rem;margin:1rem 0 1.5rem}.tvh .back{color:#fff;margin:0}.tvh .th{font-size:clamp(1.8rem,5vw,2.6rem);margin:.5rem 0 .1rem}.tvh p{margin:.2rem 0;opacity:.9}
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.75rem;margin:1rem 0}.cc{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.8rem 1rem}.cc span{display:block;color:var(--mut);font-size:.85rem}.cc a,.cc b{font-weight:600}
+#links a{padding:.45rem .9rem;border:1px solid var(--line);border-radius:99px;background:var(--card);text-decoration:none;font-weight:600}#links a:hover{background:var(--soft)}
 </style>
 </head>
 <body>
@@ -84,29 +109,29 @@ var L=document.getElementById("load"),demo=/[?&]carregamento/.test(location.sear
 function loaded(){if(!demo)clearTimeout(tm);if(!L||(L.hidden&&!demo))return;var w=Math.max(0,(demo?4000:1300)-(Date.now()-t0));setTimeout(function(){L.classList.add("out");setTimeout(function(){L.hidden=true},300)},w)}
 setTimeout(loaded,8000);
 </script>
-<header>
+<header><div class="in">
 <img src="assets/logo.png" alt="Emblema do ASC/BVRM" width="44" height="48">
 <div><b>ASC/BVRM</b><small>Basquetebol, Reguengos de Monsaraz</small></div>
-<nav aria-label="Principal"><a href="#jogos">Jogos</a><a href="#equipas">Equipas</a><a href="#historia" id="nh" hidden>História</a><a href="#clube">Clube</a></nav>
+<nav aria-label="Principal"><a href="#jogos">Jogos</a><a href="#equipas">Equipas</a><a href="#historia" id="nh" hidden>História</a><a href="#clube">Clube</a></nav></div>
 </header>
 <main>
 <div id="home">
 <section class="hero" id="hero" aria-live="polite">
 <svg class="court" viewBox="0 0 400 260" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="140" y="0" width="120" height="150"/><circle cx="200" cy="150" r="60"/><path d="M40 0v90a160 160 0 0 0 320 0V0"/><circle cx="200" cy="28" r="9"/><path d="M175 14h50"/></svg>
 </section>
+<div class="stats" id="stats"></div>
 <noscript><p>Para ver os jogos é preciso ativar o JavaScript. Também estão em <a href="https://www.fpb.pt/calendario/clube_43">fpb.pt</a>.</p></noscript>
-<section id="jogos"><h2>Jogos</h2>
+<section id="jogos"><div class="sh"><h2>Jogos</h2><p>Calendário e resultados, direto da FPB</p></div>
 <div class="chips" id="chips" role="group" aria-label="Filtrar por escalão"></div>
-<h3>Próximos jogos</h3><div id="up"></div>
-<h3>Resultados</h3><div id="res"></div>
+<div class="cols"><div><h3>Próximos jogos</h3><div id="up"></div></div><div><h3>Resultados</h3><div id="res"></div></div></div>
 </section>
-<section id="equipas"><h2>Equipas</h2><div class="teams" id="teams"></div></section>
-<section id="historia" hidden><h2>História</h2><div id="hist"></div></section>
-<section id="clube"><h2>O clube</h2><dl id="club"></dl><div id="links"></div></section>
+<section id="equipas"><div class="sh"><h2>Equipas</h2><p>Escolhe uma equipa para ver o plantel e os jogos</p></div><div class="teams" id="teams"></div></section>
+<section id="historia" hidden><div class="sh"><h2>História</h2><p>Os marcos do clube</p></div><div id="hist"></div></section>
+<section id="clube"><div class="sh"><h2>O clube</h2><p>Atlético Sport Clube / Bombeiros Voluntários de Reguengos de Monsaraz</p></div><div class="cg" id="club"></div><div id="links"></div></section>
 </div>
 <section id="team" hidden></section>
 </main>
-<footer><span id="upd"></span></footer>
+<footer><div class="in"><div class="fl"><img src="assets/logo.png" alt="" width="36" height="40"><div><b>ASC/BVRM Basquetebol</b><span>Reguengos de Monsaraz</span></div></div><span id="upd"></span></div></footer>
 <script>
 const q=s=>document.querySelector(s);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
@@ -155,31 +180,34 @@ const lab=t=>label(`${t.category||""} ${t.gender||""}`),same=(g,t)=>{const a=lab
 const tid=t=>"equipa-"+(t.fpb_id||t.name.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-"));
 const plist=t=>[...(t.hide_players?[]:(t.players?.length?t.players:(ros?.teams?.[t.fpb_id]||[])))].sort((a,b)=>(a.number??999)-(b.number??999));
 const short=g=>{const d=new Date(g.date+"T12:00");return `${WD[d.getDay()]} ${d.getDate()} ${MO[d.getMonth()]}`+(g.time?`, ${g.time}`:"")};
-const tl=q("#teams");
+const tl=q("#teams"),gr={},gridOf=k=>gr[k]||(()=>{tl.append(el("h3","gh",k));const d=el("div","tg");tl.append(d);return gr[k]=d})();
 TT.forEach(t=>{const a=el("a","tm"),nx=up.find(g=>same(g,t)),np=plist(t).length;a.href="#"+tid(t);
  a.append(el("b",0,t.name),el("small",0,t.competition||[t.category,t.gender].filter(Boolean).join(" ")),el("span","tn",nx?"Próximo jogo: "+short(nx):"Sem jogos marcados"));
  const lr=res.find(g=>same(g,t));if(lr){const x=us(lr.home)?[lr.hs,lr.as]:[lr.as,lr.hs];a.append(el("span","tn",`Último resultado: ${x[0]}–${x[1]} ${x[0]>x[1]?"(vitória)":x[0]<x[1]?"(derrota)":"(empate)"}`))}
- if(np)a.append(el("span","tn",np+" jogadores"));tl.append(a)});
+ if(np)a.append(el("span","tn",np+" jogadores"));gridOf(t.category==="Sénior"?"Seniores":"Formação").append(a)});
 const view=q("#team"),home=q("#home");
 const show=()=>{const m=location.hash.match(/^#(equipa-[\w-]+)$/),t=m&&TT.find(x=>tid(x)===m[1]);
  if(!t){home.hidden=false;view.hidden=true;document.title=TITLE;if(location.hash)document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView();return}
  home.hidden=true;view.hidden=false;view.replaceChildren();document.title=t.name+" | ASC/BVRM Basquetebol";
  const nx=up.filter(g=>same(g,t)),rs=res.filter(g=>same(g,t)),p=plist(t),back=el("a","back","Voltar às equipas");back.href="#equipas";
- const sec=(h,arr,none)=>{view.append(el("h3",0,h));const d=el("div");arr.forEach(g=>d.append(row(g)));if(!arr.length)d.append(el("p","mut",none));view.append(d)};
- view.append(back,el("h2","th",t.name),el("p","mut",t.competition||""));
- if(t.coach)view.append(el("p",0,"Equipa técnica: "+t.coach));
+ const sec=(h,arr,none,to)=>{to.append(el("h3",0,h));const d=el("div");arr.forEach(g=>d.append(row(g)));if(!arr.length)d.append(el("p","mut",none));to.append(d)};
+ const hd=el("div","tvh"),cl=el("div","cols"),c1=el("div"),c2=el("div");hd.append(back,el("h2","th",t.name),el("p",0,t.competition||[t.category,t.gender].filter(Boolean).join(" ")));
+ if(t.coach)hd.append(el("p",0,"Equipa técnica: "+t.coach));view.append(hd);
  if(t.photo){const i=el("img","tp");i.src=t.photo;i.alt="Equipa "+t.name;view.append(i)}
- sec("Próximos jogos",nx,"Sem jogos marcados.");sec("Resultados",rs,"Ainda sem resultados.");
- view.append(el("h3",0,"Plantel"));
- if(p.length){const gr=el("div","roster");p.forEach(x=>{const c=el("div","pl");c.append(el("b",0,x.number??"–"),el("span",0,x.name));if(x.position)c.append(el("small",0,x.position));gr.append(c)});view.append(gr)}
- else view.append(el("p","mut",t.hide_players?"Plantel não publicado.":"Plantel por publicar."));
+ sec("Próximos jogos",nx,"Sem jogos marcados.",c1);sec("Resultados",rs,"Ainda sem resultados.",c1);
+ c2.append(el("h3",0,"Plantel"));
+ if(p.length){const gr=el("div","roster");p.forEach(x=>{const c=el("div","pl");c.append(el("b",0,x.number??"–"),el("span",0,x.name));if(x.position)c.append(el("small",0,x.position));gr.append(c)});c2.append(gr)}
+ else c2.append(el("p","mut",t.hide_players?"Plantel não publicado.":"Plantel por publicar."));
  const ln=el("p","lk");
  if(t.fpb_id){const a=el("a",0,"Página da equipa na FPB");a.href="https://www.fpb.pt/equipa/equipa_"+t.fpb_id;a.rel="noopener";ln.append(a)}
  if(t.fpb_url){const a=el("a",0,"Classificação na FPB");a.href=t.fpb_url;a.rel="noopener";ln.append(a)}
- view.append(ln);scrollTo(0,0)};
-if(club){[["Pavilhão",club.venue],["Morada",club.address],["Email",club.email],["Telefone",club.phone],["Fundado em",club.founded]].filter(x=>x[1]).forEach(([k,v])=>q("#club").append(el("dt",0,k),el("dd",0,v)));
+ c2.append(ln);cl.append(c1,c2);view.append(cl);scrollTo(0,0)};
+if(club){const C=q("#club"),mp=x=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(x);
+ [["Pavilhão",club.venue,club.venue&&mp(club.venue+", Reguengos de Monsaraz")],["Morada",club.address,club.address&&mp(club.address)],["Email",club.email,club.email&&"mailto:"+club.email],["Telefone",club.phone,club.phone&&"tel:"+club.phone.replace(/\s/g,"")],["Fundado em",club.founded]].filter(x=>x[1]).forEach(([k,v,h])=>{const d=el("div","cc");d.append(el("span",0,k));if(h){const a=el("a",0,v);a.href=h;a.rel="noopener";d.append(a)}else d.append(el("b",0,v));C.append(d)});
  (club.links||[]).forEach(x=>{const a=el("a",0,x.label);a.href=x.url;a.rel="noopener";q("#links").append(a)})}
 q("#upd").textContent="Jogos e resultados da Federação Portuguesa de Basquetebol"+(auto?.updated?", atualizados em "+new Date(auto.updated).toLocaleString("pt-PT",{dateStyle:"long",timeStyle:"short"}):"")+".";
+const atl=new Set(Object.values(ros?.teams||{}).flat().map(x=>x.fpb_id)).size;
+[[TT.length,"equipas"],[atl,"atletas"],[up.length,"jogos marcados"],[res.length,"resultados"]].forEach(([n,l])=>{if(n){const d=el("div");d.append(el("b",0,n),el("span",0,l));q("#stats").append(d)}});
 if(hi?.items?.length){q("#historia").hidden=false;q("#nh").hidden=false;const H=q("#hist");
  if(hi.intro)H.append(el("p","hl",hi.intro));
  hi.items.forEach(x=>{const r=el("div","hy"),c=el("div");c.append(el("h3",0,x.title||""));
